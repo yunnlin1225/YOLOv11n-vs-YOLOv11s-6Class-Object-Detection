@@ -1,10 +1,10 @@
 # YOLOv11s_Bear_Cat_Dog
 
-## 專案介紹 (Project Introduction)
+## 專案介紹  (Project Introduction)
 
 本專案使用 YOLOv11s 物件偵測模型，建立熊（Bear）、貓（Cat）及狗（Dog）三類動物辨識模型，並採用五折交叉驗證（5-Fold Cross Validation）進行模型訓練與效能評估，以提升模型的可靠性與泛化能力。
 
-## 類別編號（Class ID）
+## 類別編號 （Class ID）
 
 | 類別編號 | 類別名稱 |
 |---------|---------|
@@ -12,32 +12,32 @@
 | 1 | Cat（貓） |
 | 2 | Bear（熊） |
 
-## 專案內容 (Project Information)
+## 專案內容  (Project Information)
 
 - 模型：YOLOv11s
 - 訓練方式：5-Fold Cross Validation
 - 影像尺寸：640 × 640
 - 深度學習框架：Ultralytics YOLO
 
-## 資料夾說明 (Folder Structure)
+## 資料夾說明  (Folder Structure)
 
 - **Fold1 ~ Fold5**：存放五折交叉驗證各折（Fold1～Fold5）的訓練結果，每一折皆包含獨立的資料集設定檔、模型權重及訓練成果。
 
 - **weights**：存放各折訓練完成後所產生的模型權重。
 - **README.md**：本專案說明文件，包含專案介紹、類別編號、資料夾架構、檔案用途及模型相關資訊。
 
-## 權重檔說明 (Model Weights)
+## 權重檔說明  (Model Weights)
 
 - **best.pt**：驗證集表現最佳的模型權重。
 - **last.pt**：最後一個 Epoch 儲存的模型權重。
 
-### auto_5fold.py (5-Fold Cross Validation Training Script)
+### auto_5fold.py  (5-Fold Cross Validation Training Script)
 五折交叉驗證（5-Fold Cross Validation）主程式，負責自動建立各折資料集、產生對應的 `data.yaml` 設定檔，並執行 YOLOv11s 模型訓練，最後儲存各折的訓練結果與模型權重。
 
-### data.yaml (Dataset Configuration File)
+### data.yaml  (Dataset Configuration File)
 各折（Fold1～Fold5）的資料集設定檔，記錄 YOLOv11s 訓練所需的資料路徑、類別數（nc）及類別名稱（names）。
 
-## 專案目的 (Project Objectives)
+## 專案目的  (Project Objectives)
 
 本專案旨在建置一套以 YOLOv11s 為基礎之動物物件偵測模型，針對熊（Bear）、貓（Cat）及狗（Dog）三類目標進行訓練與辨識。為提升模型評估的客觀性與泛化能力，本研究採用五折交叉驗證（5-Fold Cross Validation）作為模型驗證方法，將資料集分為五個子集合，並依序以其中一折作為驗證集，其餘四折作為訓練集，共完成五次模型訓練與驗證。
 
@@ -45,7 +45,7 @@
 
 透過比較各折模型之 Precision、Recall、mAP@50、mAP@50-95 等評估指標，可分析模型於不同資料分割下之辨識效能與穩定性，作為 YOLOv11s 應用於動物物件偵測之研究成果，並提供後續模型測試、推論及相關研究之參考。
 
-## 研究目標 (Research Objectives)
+## 研究目標  (Research Objectives)
 
 本專案以 YOLOv11s 為核心模型，建置熊（Bear）、貓（Cat）及狗（Dog）三類動物物件偵測系統，並採用五折交叉驗證（5-Fold Cross Validation）進行模型訓練與效能評估，以提升模型的穩定性及泛化能力。
 
@@ -58,7 +58,7 @@
 
 此外，本專案提供完整的五折交叉驗證流程，包含自動化訓練程式（auto_5fold.py）、各折資料集設定檔（data.yaml）、各折訓練成果（Fold1～Fold5）及模型權重（best.pt、last.pt），作為模型效能分析、成果展示及後續研究之依據。
 
-## 訓練參數（Training Parameters）
+## 訓練參數 （Training Parameters）
 
 本專案採用 YOLOv11s 模型訓練參數如下：
 
