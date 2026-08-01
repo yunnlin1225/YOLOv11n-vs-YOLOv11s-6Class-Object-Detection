@@ -69,7 +69,7 @@
 | Batch Size | 8 | 每次訓練載入 8 張影像 |
 | Image Size | 640 × 640 | 輸入影像尺寸 |
 | Workers | 2 | Windows 系統資料載入執行緒數 |
-| Device | GPU（device=0） | 使用 NVIDIA GPU 進行訓練 |
+| Device | GPU（device=0） | 使用 NVIDIA RTX 2060 進行訓練 |
 | Cache | True | 將資料集快取至記憶體，加快訓練速度 |
 | AMP | True | 啟用 Automatic Mixed Precision，加速訓練並降低 GPU 記憶體使用量 |
 | Initial Learning Rate | 0.005 | 初始學習率（lr0） |
