@@ -4,7 +4,7 @@
 
 本專案使用 YOLOv11s 物件偵測模型，建立熊（Bear）、貓（Cat）及狗（Dog）三類動物辨識模型，並採用五折交叉驗證（5-Fold Cross Validation）進行模型訓練與效能評估，以提升模型的可靠性與泛化能力。
 
-## 類別編號 （Class ID）
+## 類別編號（Class ID）
 
 | 類別編號 | 類別名稱 |
 |---------|---------|
@@ -58,7 +58,7 @@
 
 此外，本專案提供完整的五折交叉驗證流程，包含自動化訓練程式（auto_5fold.py）、各折資料集設定檔（data.yaml）、各折訓練成果（Fold1～Fold5）及模型權重（best.pt、last.pt），作為模型效能分析、成果展示及後續研究之依據。
 
-## 訓練參數 （Training Parameters）
+## 訓練參數（Training Parameters）
 
 本專案採用 YOLOv11s 模型訓練參數如下：
 
