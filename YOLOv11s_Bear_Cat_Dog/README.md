@@ -57,3 +57,21 @@
 - mAP@50-95 達 **80% 以上**
 
 此外，本專案提供完整的五折交叉驗證流程，包含自動化訓練程式（auto_5fold.py）、各折資料集設定檔（data.yaml）、各折訓練成果（Fold1～Fold5）及模型權重（best.pt、last.pt），作為模型效能分析、成果展示及後續研究之依據。
+
+## 訓練參數（Training Parameters）
+
+本專案採用 YOLOv11s 模型訓練參數如下：
+
+| 參數 | 設定值 | 說明 |
+|------|--------|------|
+| Model | YOLOv11s (`yolo11s.pt`) | 使用官方 YOLOv11s 預訓練權重作為模型初始權重，再以 Bear、Cat、Dog 資料集進行訓練。 |
+| Epochs | 100 | 每一折訓練 100 個 Epoch |
+| Batch Size | 8 | 每次訓練載入 8 張影像 |
+| Image Size | 640 × 640 | 輸入影像尺寸 |
+| Workers | 2 | Windows 系統資料載入執行緒數 |
+| Device | GPU（device=0） | 使用 NVIDIA GPU 進行訓練 |
+| Cache | True | 將資料集快取至記憶體，加快訓練速度 |
+| AMP | True | 啟用 Automatic Mixed Precision，加速訓練並降低 GPU 記憶體使用量 |
+| Initial Learning Rate | 0.005 | 初始學習率（lr0） |
+| Cross Validation | 5-Fold | 採用五折交叉驗證 |
+| Random Seed | 42 | 固定資料切分結果，提升實驗可重現性 |
