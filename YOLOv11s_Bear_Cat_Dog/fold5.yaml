@@ -1,0 +1,7 @@
+path: C:/Users/user/Desktop/YOLOv11s_Bear_Cat_Dog/fold5
+train: images/train
+val: images/val
+names:
+  0: dog
+  1: cat
+  2: bear
