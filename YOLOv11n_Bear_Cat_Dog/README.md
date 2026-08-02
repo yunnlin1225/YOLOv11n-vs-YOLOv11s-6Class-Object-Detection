@@ -1,1 +1,82 @@
+# YOLOv11n_Bear_Cat_Dog
+
+## 專案介紹  (Project Introduction)
+
+本專案以 Ultralytics YOLOv11n 物件偵測模型為核心，建置熊（Bear）、貓（Cat）及狗（Dog）三類動物之物件偵測系統。透過蒐集與標註三類動物影像資料，建立符合 YOLO 格式之資料集，並結合深度學習技術進行模型訓練，使模型能夠自動辨識影像中的目標物件，並輸出其類別與位置資訊。
+
+為提升模型評估結果的客觀性、穩定性及泛化能力，本專案採用五折交叉驗證（5-Fold Cross Validation）作為模型驗證方法，將資料集平均分為五個子集合，依序以其中一折作為驗證集，其餘四折作為訓練集，共完成五次獨立訓練與驗證。藉由比較各折模型的訓練結果，可降低因單次資料切分所造成的評估偏差，提升模型效能分析的可信度。
+
+此外，本專案建置完整的自動化五折訓練流程，包含資料集切分、`data.yaml` 設定檔建立、YOLOv11n 模型訓練、模型權重儲存及各折訓練成果管理，使整體訓練流程更具一致性、可重現性與管理效率，亦方便後續進行模型測試、效能比較及研究成果展示。
+
+## 類別編號（Class ID）
+
+| 類別編號 | 類別名稱 |
+|---------|---------|
+| 0 | Dog（狗） |
+| 1 | Cat（貓） |
+| 2 | Bear（熊） |
+
+## 專案內容  (Project Information)
+
+- 模型：YOLOv11n
+- 訓練方式：5-Fold Cross Validation
+- 影像尺寸：640 × 640
+- 深度學習框架：Ultralytics YOLO
+
+## 資料夾說明  (Folder Structure)
+
+- **Fold1 ~ Fold5**：存放五折交叉驗證各折（Fold1～Fold5）的訓練結果，每一折皆包含獨立的資料集設定檔、模型權重及訓練成果。
+
+- **weights**：存放各折訓練完成後所產生的模型權重。
+- **README.md**：本專案說明文件，包含專案介紹、類別編號、資料夾架構、檔案用途及模型相關資訊。
+
+## 權重檔說明  (Model Weights)
+
+- **best.pt**：驗證集表現最佳的模型權重。
+- **last.pt**：最後一個 Epoch 儲存的模型權重。
+
+### auto_5fold.py  (5-Fold Cross Validation Training Script)
+五折交叉驗證（5-Fold Cross Validation）主程式，負責自動建立各折資料集、產生對應的 `data.yaml` 設定檔，並執行 YOLOv11n 模型訓練，最後儲存各折的訓練結果與模型權重。
+
+### data.yaml  (Dataset Configuration File)
+各折（Fold1～Fold5）的資料集設定檔，記錄 YOLOv11s 訓練所需的資料路徑、類別數（nc）及類別名稱（names）。
+
+## 專案目的  (Project Objectives)
+
+本專案旨在建置一套以 YOLOv11n 為基礎之動物物件偵測模型，針對熊（Bear）、貓（Cat）及狗（Dog）三類目標進行訓練與辨識。為提升模型評估的客觀性與泛化能力，本研究採用五折交叉驗證（5-Fold Cross Validation）作為模型驗證方法，將資料集分為五個子集合，並依序以其中一折作為驗證集，其餘四折作為訓練集，共完成五次模型訓練與驗證。
+
+本專案提供完整的五折訓練流程，包含各折資料集設定檔（data.yaml）、五折交叉驗證自動化訓練程式（auto_5fold.py）、各折訓練結果（Fold1～Fold5），以及各折模型權重（best.pt、last.pt），方便進行模型管理、效能分析及成果驗證。
+
+透過比較各折模型之 Precision、Recall、mAP@50、mAP@50-95 等評估指標，可分析模型於不同資料分割下之辨識效能與穩定性，作為 YOLOv11n 應用於動物物件偵測之研究成果，並提供後續模型測試、推論及相關研究之參考。
+
+## 研究目標  (Research Objectives)
+
+本專案以 YOLOv11n 為核心模型，建置熊（Bear）、貓（Cat）及狗（Dog）三類動物物件偵測系統，並採用五折交叉驗證（5-Fold Cross Validation）進行模型訓練與效能評估，以提升模型的穩定性及泛化能力。
+
+本專案期望透過資料集標註、模型訓練及參數調整，使模型達成以下效能目標：
+
+- Precision（精確率）達 **90% 以上**
+- Recall（召回率）達 **90% 以上**
+- mAP@50 達 **90% 以上**
+- mAP@50-95 達 **80% 以上**
+
+此外，本專案提供完整的五折交叉驗證流程，包含自動化訓練程式（auto_5fold.py）、各折資料集設定檔（data.yaml）、各折訓練成果（Fold1～Fold5）及模型權重（best.pt、last.pt），作為模型效能分析、成果展示及後續研究之依據。
+
+## 訓練參數（Training Parameters）
+
+本專案採用 YOLOv11n 模型訓練參數如下：
+
+| 參數 | 設定值 | 說明 |
+|------|--------|------|
+| Model | YOLOv11n (`yolo11n.pt`) | 使用官方 YOLOv11n 預訓練權重作為模型初始權重，再以 Bear、Cat、Dog 資料集進行訓練。 |
+| Epochs | 100 | 每一折訓練 100 個 Epoch |
+| Batch Size | 8 | 每次訓練載入 8 張影像 |
+| Image Size | 640 × 640 | 輸入影像尺寸 |
+| Workers | 2 | Windows 系統資料載入執行緒數 |
+| Device | GPU（device=0） | 使用 NVIDIA RTX 2060 進行訓練 |
+| Cache | True | 將資料集快取至記憶體，加快訓練速度 |
+| AMP | True | 啟用 Automatic Mixed Precision，加速訓練並降低 GPU 記憶體使用量 |
+| Initial Learning Rate | 0.005 | 初始學習率（lr0） |
+| Cross Validation | 5-Fold | 採用五折交叉驗證 |
+| Random Seed | 42 | 固定資料切分結果，提升實驗可重現性 |
 
