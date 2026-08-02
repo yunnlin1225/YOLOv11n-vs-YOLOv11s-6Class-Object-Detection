@@ -97,7 +97,3 @@
 ## 結果分析 Performance Analysis
 
 由五折交叉驗證結果可知，YOLOv11n 模型於五次訓練中皆展現穩定的物件偵測效能，但與YOLOv11s一樣沒有達到研究目標。不過其中的第 4 折（Fold 4）表現最佳，Precision、Recall、mAP@50 及 mAP@50-95 分別達 **0.930**、**0.910**、**0.960** 及 **0.660**。整體平均效能為 Precision **0.874**、Recall **0.842**、mAP@50 **0.878** 及 mAP@50-95 **0.550**，顯示 YOLOv11n 對 Bear、Cat 及 Dog 三類動物具有良好的辨識能力與泛化能力，可作為後續模型測試、推論及效能分析之依據。
-
-<h2>訓練結果 (Training Results)</h2>
-
-<img src="images/YOLOv11s_AVG..png" width="700">
