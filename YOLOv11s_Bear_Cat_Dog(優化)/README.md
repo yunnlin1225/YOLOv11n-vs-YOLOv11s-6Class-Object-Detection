@@ -44,11 +44,11 @@
 
 ## 訓練參數 (Training Parameters)
 
-本專案採用 YOLOv11n 預訓練模型進行五折交叉驗證（5-Fold Cross Validation），模型訓練參數如下：
+本專案採用 YOLOv11s 預訓練模型進行五折交叉驗證（5-Fold Cross Validation），模型訓練參數如下：
 
 | 參數 | 設定值 | 說明 |
 |------|--------|------|
-| Model | YOLOv11n (`yolo11s.pt`) | 使用 Ultralytics YOLOv11s 預訓練模型 |
+| Model | YOLOv11s (`yolo11s.pt`) | 使用 Ultralytics YOLOv11s 預訓練模型 |
 | Epochs | 100 | 每一折訓練 100 個 Epoch |
 | Batch Size | 8 | 每次訓練載入 8 張影像 |
 | Image Size | 640 × 640 | 輸入影像尺寸 |
