@@ -17,6 +17,31 @@
 | 2 | Bear | 熊 | 150 |
 | **Total** | - | **總計** | **450** |
 
+## 專案內容  (Project Information)
+
+- 模型：YOLOv11s
+- 訓練方式：5-Fold Cross Validation
+- 影像尺寸：640 × 640
+- 深度學習框架：Ultralytics YOLO
+
+## 資料夾說明  (Folder Structure)
+
+- **Fold1 ~ Fold5**：存放五折交叉驗證各折（Fold1～Fold5）的訓練結果，每一折皆包含獨立的資料集設定檔、模型權重及訓練成果。
+
+- **weights**：存放各折訓練完成後所產生的模型權重。
+- **README.md**：本專案說明文件，包含專案介紹、類別編號、資料夾架構、檔案用途及模型相關資訊。
+
+## 權重檔說明  (Model Weights)
+
+- **best.pt**：驗證集表現最佳的模型權重。
+- **last.pt**：最後一個 Epoch 儲存的模型權重。
+
+### auto_5fold.py  (5-Fold Cross Validation Training Script)
+五折交叉驗證（5-Fold Cross Validation）主程式，負責自動建立各折資料集、產生對應的 `data.yaml` 設定檔，並執行 YOLOv11s 模型訓練，最後儲存各折的訓練結果與模型權重。
+
+### data.yaml  (Dataset Configuration File)
+各折（Fold1～Fold5）的資料集設定檔，記錄 YOLOv11s 訓練所需的資料路徑、類別數（nc）及類別名稱（names）。
+
 ## 訓練參數 (Training Parameters)
 
 本專案採用 YOLOv11n 預訓練模型進行五折交叉驗證（5-Fold Cross Validation），模型訓練參數如下：
