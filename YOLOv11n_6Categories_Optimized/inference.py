@@ -48,7 +48,7 @@ def run_inference(
     results = model.predict(
         source=source_path,
         conf=conf,   # 設定 0.25 預設門檻
-        iou=iou,     # 設定 0.70 預設門檻
+        iou=iou,     # 設定 0.60 預設門檻
         imgsz=imgsz, # 設定 640 預設解析度
         save=True,   # 自動繪製邊界框並儲存標記後的影像/影片
         save_txt=save_txt,  # 是否另外導出 .txt 格式的標籤結果
