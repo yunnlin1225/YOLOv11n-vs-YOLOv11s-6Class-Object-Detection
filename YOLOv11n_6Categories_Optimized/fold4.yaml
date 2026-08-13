@@ -1,0 +1,10 @@
+path: C:/Users/user/Desktop/YOLOv11n_6Categories(1)/fold4
+train: images/train
+val: images/val
+names:
+  0: dog
+  1: cat
+  2: bear
+  3: pig
+  4: monkey
+  5: person
