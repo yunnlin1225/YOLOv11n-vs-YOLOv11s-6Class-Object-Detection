@@ -62,7 +62,6 @@
 本資料集採用 **YOLO 格式（YOLO Annotation Format）**進行目標標註，每張影像對應一個標註檔案，記錄影像中目標的類別編號與 Bounding Box 座標。
 
 每筆標註資料包含以下資訊：
-
 ```text
 Class ID  Center X  Center Y  Width  Height
 
@@ -70,7 +69,7 @@ Class ID  Center X  Center Y  Width  Height
 
 本研究採用 **YOLOv11n** 作為基礎目標偵測模型，針對六類別資料集進行五折交叉驗證訓練。為確保各 Fold 實驗條件一致，五個 Fold 均採用相同的模型架構、影像尺寸、Batch Size 與訓練參數進行訓練。
 
-### 模型與訓練設定
+## 模型與訓練設定
 
 | 訓練參數 | 設定值 | 說明 |
 |----------|--------|------|
