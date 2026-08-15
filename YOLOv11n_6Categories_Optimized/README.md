@@ -62,7 +62,6 @@
 本資料集採用 **YOLO 格式（YOLO Annotation Format）**進行目標標註，每張影像對應一個標註檔案，記錄影像中目標的類別編號與 Bounding Box 座標。
 
 每筆標註資料包含以下資訊：
-```text
 Class ID  Center X  Center Y  Width  Height
 
 ## 訓練參數 (Training Parameters)
