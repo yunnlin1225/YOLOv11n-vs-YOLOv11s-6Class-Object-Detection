@@ -74,22 +74,22 @@ Class ID  Center X  Center Y  Width  Height
 
 | 訓練參數 | 設定值 | 說明 |
 |----------|--------|------|
-| Model | YOLOv11n | 採用 YOLOv11 Nano 輕量化模型 |
+| Model | YOLOv11n | 採用 YOLOv11 Nano 輕量化目標偵測模型 |
 | Pretrained Weights | `yolo11n.pt` | 使用預訓練權重進行模型初始化 |
 | Classes | 6 | dog、cat、bear、pig、monkey、person |
-| Epochs | 100 | 最大訓練週期 |
+| Epochs | 100 | 設定最大訓練週期為 100 Epochs |
 | Batch Size | 8 | 每次迭代處理 8 張影像 |
 | Image Size | 640 × 640 | 模型輸入影像尺寸 |
-| Device | GPU 0 | 使用 NVIDIA GPU 進行訓練 |
+| Device | GPU 0 | 使用 NVIDIA GPU 進行模型訓練 |
 | Workers | 2 | 資料載入程序數 |
-| Cache | False | 不使用資料快取，降低額外記憶體使用 |
-| AMP | True | 啟用 Automatic Mixed Precision |
+| Cache | False | 不使用資料快取，以降低額外記憶體使用 |
+| AMP | True | 啟用 Automatic Mixed Precision，提升訓練效率 |
 | Optimizer | Auto | 由 Ultralytics 自動選擇最佳化器 |
-| Cosine LR | True | 使用 Cosine Learning Rate Scheduler |
-| Close Mosaic | 10 | 最後 10 個 Epoch 關閉 Mosaic Augmentation |
+| Cosine LR | True | 啟用 Cosine Learning Rate Scheduler |
+| Close Mosaic | 10 | 最後 10 個 Epoch 關閉 Mosaic 資料增強 |
 | Classification Loss | 0.75 | 設定分類損失權重 |
-| Cross Validation | 5-Fold | 採用五折交叉驗證 |
-| Random State | 42 | 固定資料切分的隨機種子 |
+| Cross Validation | 5-Fold | 採用五折交叉驗證進行模型效能評估 |
+| Random State | 42 | 固定資料切分的隨機種子，以確保實驗可重現性 |
 
 ### 五折交叉驗證設定
 
