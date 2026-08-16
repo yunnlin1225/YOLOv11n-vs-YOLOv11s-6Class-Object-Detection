@@ -229,3 +229,114 @@ Fold_5/
 ```
 
 其中，各 Fold 的 **`best.pt`** 作為主要評估權重，用於後續 Confidence Threshold 評估、模型效能比較與影像推論。
+
+
+## YOLOv11n 五折交叉驗證結果 (YOLOv11n 5-Fold Cross Validation Results)
+
+為評估 YOLOv11n 模型於六類別目標偵測任務中的整體效能與穩定性，本研究採用 **5-Fold Cross Validation** 進行模型訓練與驗證。透過五組不同的訓練集與驗證集組合，分別取得各 Fold 的 Precision（P）、Recall（R）、mAP50 及 mAP50-95，並計算五個 Fold 的平均值作為整體模型效能指標。
+
+### 五折交叉驗證結果
+
+| Fold          | Precision (P) | Recall (R) |      mAP50 |   mAP50-95 |
+| ------------- | ------------: | ---------: | ---------: | ---------: |
+| Fold 1        |        0.9070 |     0.8810 |     0.9450 |     0.7830 |
+| Fold 2        |        0.8920 |     0.9230 |     0.9510 |     0.7770 |
+| Fold 3        |        0.8900 |     0.9480 |     0.9540 |     0.8170 |
+| Fold 4        |        0.9530 |     0.8560 |     0.9220 |     0.7590 |
+| Fold 5        |        0.8920 |     0.9360 |     0.9570 |     0.8010 |
+| **5-Fold 平均** |    **0.9068** | **0.9088** | **0.9458** | **0.7874** |
+
+### 整體結果
+
+五折交叉驗證結果顯示，YOLOv11n 的平均 **Precision 為 0.9068、Recall 為 0.9088、mAP50 為 0.9458，以及 mAP50-95 為 0.7874**。
+
+其中 Precision 與 Recall 均達到 **90% 以上**，mAP50 達到 **94.58%**，顯示模型具有良好的目標辨識能力與偵測效能；mAP50-95 則達到 **78.74%**，代表模型在較嚴格的 IoU 評估條件下仍具備一定的定位能力。
+
+本次五折交叉驗證採用 **Confidence Threshold = 0.25（Default）** 進行評估，後續將進一步透過 Confidence Threshold 調整與模型評估，分析不同信心度門檻對模型 Precision、Recall 及整體偵測表現的影響。
+
+## 效能分析 (Performance Analysis)
+
+五折交叉驗證結果顯示，YOLOv11n 平均 **Precision 為 90.68%、Recall 為 90.88%、mAP50 為 94.58%、mAP50-95 為 78.74%**，四項指標皆達成本研究設定之效能目標。
+
+其中，Fold 4 具有最高 Precision（95.30%），Fold 3 具有最高 Recall（94.80%）與 mAP50-95（81.70%），Fold 5 則具有最高 mAP50（95.70%）。整體而言，不同 Fold 間雖存在些微差異，但模型仍維持良好的偵測穩定性。
+
+| 評估指標      |  研究目標 |       五折平均 |  結果 |
+| --------- | ----: | ---------: | :-: |
+| Precision | ≥ 90% | **90.68%** |  ✅  |
+| Recall    | ≥ 90% | **90.88%** |  ✅  |
+| mAP50     | ≥ 90% | **94.58%** |  ✅  |
+| mAP50-95  | ≥ 75% | **78.74%** |  ✅  |
+
+mAP50-95 相較於 mAP50 下降約 **15.84 個百分點**，顯示模型具有良好的目標辨識能力，但在較嚴格的 IoU 條件下，Bounding Box 定位精度仍具有改善空間。
+
+> **綜合而言，YOLOv11n 已達成四項主要效能目標，並具有良好的偵測效能與跨資料切分穩定性。**
+
+## 信心度閾值分析 (Confidence Threshold Analysis)
+
+本研究比較 **Confidence Threshold = 0.25 與 0.26** 的模型評估結果，以分析信心度閾值調整對 YOLOv11n 偵測效能的影響。其中 0.25 為原始評估設定，並進一步將閾值調整為 0.26 進行比較。
+
+### Confidence Threshold = 0.26
+
+| Fold          | Precision (P) | Recall (R) |      mAP50 |   mAP50-95 |
+| ------------- | ------------: | ---------: | ---------: | ---------: |
+| Fold 1        |         0.916 |      0.881 |      0.888 |      0.735 |
+| Fold 2        |         0.908 |      0.923 |      0.920 |      0.759 |
+| Fold 3        |         0.909 |      0.940 |      0.927 |      0.793 |
+| Fold 4        |         0.921 |      0.889 |      0.879 |      0.724 |
+| Fold 5        |         0.902 |      0.943 |      0.933 |      0.784 |
+| **5-Fold 平均** |    **0.9113** | **0.9152** | **0.9095** | **0.7588** |
+
+### Confidence Threshold 比較
+
+| Confidence Threshold |  Precision |     Recall |      mAP50 |   mAP50-95 |
+| -------------------: | ---------: | ---------: | ---------: | ---------: |
+|             **0.25** |     0.9068 |     0.9088 | **0.9458** | **0.7874** |
+|             **0.26** | **0.9113** | **0.9152** |     0.9095 |     0.7588 |
+
+將 Confidence Threshold 由 **0.25 調整為 0.26** 後，Precision 與 Recall 分別由 **90.68% 提升至 91.13%**、**90.88% 提升至 91.52%**；然而，mAP50 與 mAP50-95 則分別下降至 **90.95%** 與 **75.88%**。
+
+結果顯示，0.26 在 Precision 與 Recall 上略有提升，但 0.25 在 mAP50 與 mAP50-95 上具有較佳表現。
+
+> **綜合四項評估指標，本研究採用 Confidence Threshold = 0.25 作為後續模型評估與比較的主要設定。**
+
+## 模型推論結果 (Inference Results)
+
+為驗證 YOLOv11n 模型於實際影像中的目標偵測能力，本研究使用五折交叉驗證訓練所得之模型權重進行影像推論，測試模型對狗、貓、熊、豬、猴及人六類目標的辨識效果。
+
+## 模型推論結果 (Inference Results)
+
+為驗證 YOLOv11n 模型於實際影像中的目標偵測能力，本研究使用訓練完成之模型進行影像推論，並展示六類別之實際偵測結果。
+
+<table>
+  <tr>
+    <td align="center"><img src="images/dog_test_01.jpg" width="300"></td>
+    <td align="center"><img src="images/cat_test_03.jpg" width="300"></td>
+    <td align="center"><img src="images/bear_test_05.jpg" width="300"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Dog</b></td>
+    <td align="center"><b>Cat</b></td>
+    <td align="center"><b>Bear</b></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="images/pig_test_05.jpg" width="300"></td>
+    <td align="center"><img src="images/monkey_test_03.jpg" width="300"></td>
+    <td align="center"><img src="images/person_test_02.jpg" width="300"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Pig</b></td>
+    <td align="center"><b>Monkey</b></td>
+    <td align="center"><b>Person</b></td>
+  </tr>
+</table>
+
+模型能夠於測試影像中辨識六類目標，並輸出對應的 **Bounding Box、類別名稱及 Confidence Score**，顯示 YOLOv11n 已具備六類別目標之實際影像偵測能力。
+
+> **實際推論結果顯示，模型能有效辨識狗、貓、熊、豬、猴及人等六類目標，可作為後續模型比較與實際應用之基礎。**
+
+
+
+
+
+
+
