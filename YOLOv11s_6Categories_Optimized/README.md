@@ -6,10 +6,9 @@
 
 研究主要目的為比較 **YOLOv11n 與 YOLOv11s** 在相同六類別資料集下的 Precision、Recall、mAP50 及 mAP50-95 表現，分析不同模型規模於目標辨識與 Bounding Box 定位能力上的差異，並作為後續最終模型選擇與實際部署之依據。
 
-
 ## 研究目標 (Research Objectives)
 
-本研究旨在建立 **YOLOv11s 六類別目標偵測模型**，並透過五折交叉驗證與超參數調整，評估模型的偵測效能、穩定性及泛化能力。
+本研究旨在建立 **YOLOv11s 六類別目標偵測模型**，並透過五折交叉驗證與超參數調整，評估模型的偵測效能、穩定性及泛化能力，作為後續模型比較與最終部署之依據。
 
 主要研究目標如下：
 
@@ -35,9 +34,10 @@
    * 比較不同參數組合對 Precision、Recall、mAP50 及 mAP50-95 的影響。
    * 以四項研究效能目標作為參數選擇依據，選擇能兼顧分類與定位表現的參數組合。
 
-5. **作為 YOLOv11n 與 YOLOv11s 比較依據**
+5. **評估模型比較與最終部署可行性**
 
-   * 比較兩種模型在相同六類別資料集下的偵測效能，作為後續最終模型選擇與部署之依據。
+   * 比較 YOLOv11n 與 YOLOv11s 在相同六類別資料集下的偵測效能。
+   * 綜合模型偵測準確度、定位能力與實際推論表現，作為最終模型選擇與後續部署之依據。
 
   
 ## 類別編號 (Class ID)
@@ -262,7 +262,7 @@ Fold_5/
 
 當參數設定為 **`cls=0.745`、`box=8.0`** 時，Precision 為 **90.08%**、Recall 為 **90.18%**、mAP50 為 **93.30%**、mAP50-95 為 **77.58%**，四項指標皆達成本研究設定之效能目標。
 
-因此，本研究最終採用 **`cls=0.745`、`box=8.0`** 作為 YOLOv11s 的訓練參數設定，並用於後續模型評估、推論與最終模型建立。
+因此，本研究最終採用 **`cls=0.745`、`box=8.0`** 作為 YOLOv11s 的訓練參數設定，並用於後續模型評估、推論與最終部署模型建立。
 
 > **超參數測試結果顯示，最終設定並非單純追求單一指標最高值，而是選擇能同時達成 Precision、Recall、mAP50 與 mAP50-95 四項研究目標的參數組合。**
 
@@ -285,52 +285,63 @@ YOLOv11s 在最終參數設定 **`cls=0.745`、`box=8.0`** 下，五折平均 Pr
 
 > **綜合五折交叉驗證結果，經超參數調整後的 YOLOv11s 已達成 Precision、Recall、mAP50 及 mAP50-95 四項研究效能目標。**
 
+## 信心度閾值分析 (Confidence Threshold Analysis)
 
-# Confidence Threshold 調整
+為進一步分析 Confidence Threshold 對 YOLOv11s 模型偵測效能的影響，本研究將信心度門檻由預設的 **0.25 調整為 0.26**，並重新進行五折模型評估，比較 Precision、Recall、mAP50 及 mAP50-95 的變化。
 
-為進一步評估信心度門檻（Confidence Threshold）對 YOLOv11s 模型偵測效能的影響，本研究在完成模型超參數調整後，進一步針對 Confidence Threshold 進行測試。
+### Confidence Threshold = 0.26
 
-原模型使用 **Confidence Threshold = 0.25**，並將門檻提高至 **0.26** 進行五折交叉驗證。實驗過程中其餘驗證條件保持一致，其中影像輸入尺寸（imgsz）維持 **640**，NMS IoU Threshold 維持 **0.60**，以確保不同 Confidence Threshold 間具有一致的比較基準。
+| Fold | Precision (P) | Recall (R) | mAP50 | mAP50-95 |
+|---|---:|---:|---:|---:|
+| Fold 1 | 0.9133 | 0.8740 | 0.8824 | 0.7388 |
+| Fold 2 | 0.9033 | 0.9111 | 0.9061 | 0.7103 |
+| Fold 3 | 0.9111 | 0.9039 | 0.9016 | 0.7774 |
+| Fold 4 | 0.9215 | 0.8860 | 0.8792 | 0.7280 |
+| Fold 5 | 0.8884 | 0.9075 | 0.8924 | 0.7634 |
+| **5-Fold 平均** | **0.9075** | **0.8965** | **0.8923** | **0.7436** |
 
-## Confidence Threshold = 0.26 五折驗證結果
+### Confidence Threshold 比較
 
-| 折數（Fold）       | Precision (P) | Recall (R) |      mAP50 |   mAP50-95 |
-| -------------- | ------------: | ---------: | ---------: | ---------: |
-| Fold 1         |        0.9133 |     0.8740 |     0.8824 |     0.7388 |
-| Fold 2         |        0.9033 |     0.9111 |     0.9061 |     0.7103 |
-| Fold 3         |        0.9111 |     0.9039 |     0.9016 |     0.7774 |
-| Fold 4         |        0.9215 |     0.8860 |     0.8792 |     0.7280 |
-| Fold 5         |        0.8884 |     0.9075 |     0.8924 |     0.7634 |
-| **五折平均（Mean）** |    **0.9075** | **0.8965** | **0.8923** | **0.7436** |
+| Confidence Threshold | Precision | Recall | mAP50 | mAP50-95 |
+|---:|---:|---:|---:|---:|
+| **0.25（Default）** | **0.9008** | **0.9018** | **0.9330** | **0.7758** |
+| **0.26** | **0.9075** | **0.8965** | **0.8923** | **0.7436** |
 
-## Confidence Threshold 效能比較
+當 Confidence Threshold 由 **0.25 提高至 0.26** 時，Precision 由 **90.08% 提升至 90.75%**，但 Recall、mAP50 及 mAP50-95 均有所下降。
 
-將原本的 **Confidence Threshold = 0.25** 與調整後的 **Confidence Threshold = 0.26** 進行比較：
+其中，Confidence Threshold = **0.25** 時，Precision、Recall、mAP50 及 mAP50-95 四項指標皆達成本研究設定之效能目標；當門檻提高至 **0.26** 時，僅 Precision 維持在目標範圍內。
 
-| Confidence Threshold | Precision (P) | Recall (R) |      mAP50 |   mAP50-95 |
-| -------------------: | ------------: | ---------: | ---------: | ---------: |
-|             **0.25** |    **0.9008** | **0.9018** | **0.9330** | **0.7758** |
-|                 0.26 |        0.9075 |     0.8965 |     0.8923 |     0.7436 |
+當 Confidence Threshold 由 **0.25 提高至 0.26** 時，Precision 由 **90.08% 提升至 90.75%**，但 Recall、mAP50 及 mAP50-95 均有所下降。其中，Confidence Threshold = **0.25** 時，四項評估指標皆達成本研究設定之效能目標；當門檻提高至 **0.26** 時，僅 Precision 維持達標。
 
-## Confidence Threshold 效能分析
+考量本研究最終目標為建立可供實際部署之六類別目標偵測模型，因此除 Precision 外，亦需兼顧目標檢出能力與 Bounding Box 定位表現。綜合比較結果，本研究最終採用 **Confidence Threshold = 0.25**，作為後續模型推論與最終部署模型之信心度門檻。
 
-當 Confidence Threshold 由 **0.25 提升至 0.26** 後，Precision 由 **0.9008 提升至 0.9075**，增加 **0.0067**，顯示提高信心度門檻可以降低部分低信心度預測，使模型的預測結果更加保守，進而降低誤判情況。
-
-然而，Recall 則由 **0.9018 降低至 0.8965**，下降 **0.0053**。這表示隨著 Confidence Threshold 提高，部分原本可以被正確偵測的目標可能因信心度低於門檻而遭到排除，因此造成漏檢增加。
-
-在整體偵測效能方面，mAP50 由 **0.9330 降低至 0.8923**，下降 **0.0407**；mAP50-95 則由 **0.7758 降低至 0.7436**，下降 **0.0322**。
-
-本研究所設定的模型效能目標為：
-
-* Precision ≥ 0.90
-* Recall ≥ 0.90
-* mAP50 ≥ 0.90
-* mAP50-95 ≥ 0.75
-
-在 **Confidence Threshold = 0.25** 時，四項指標皆能同時達成研究設定目標。
-
-相較之下，當 Confidence Threshold 提升至 **0.26** 時，雖然 Precision 提升至 **0.9075**，但 Recall 降低至 **0.8965**、mAP50 降低至 **0.8923**、mAP50-95 降低至 **0.7436**，其中三項指標未達研究設定標準。
-
-因此，提高 Confidence Threshold 至 0.26 雖然能進一步提升 Precision，但會造成 Recall 與整體 mAP 指標下降。綜合 Precision、Recall、mAP50 與 mAP50-95 四項指標後，**Confidence Threshold = 0.25 能取得較佳的整體偵測效能與指標平衡，因此維持 0.25 作為 YOLOv11s 模型的 Confidence Threshold。**
+> **Confidence Threshold = 0.25 能在 Precision、Recall 與定位效能之間維持較佳的整體平衡，並同時達成本研究設定之四項效能目標，因此選定作為最終部署模型的推論設定。**
 
 
+## 模型推論結果 (Inference Results)
+
+使用最終選定之 YOLOv11s 模型，並設定 **Confidence Threshold = 0.25**，針對六類別測試影像進行實際推論，以驗證模型於未參與訓練影像上的目標辨識能力。
+
+### Bear
+
+![Bear Detection](inference_results/bear_test_04.jpg)
+
+### Cat
+
+![Cat Detection](inference_results/cat_test_02.jpg)
+
+### Dog
+
+![Dog Detection](inference_results/dog_test_05.jpg)
+
+### Monkey
+
+![Monkey Detection](inference_results/monkey_test_01.jpg)
+
+### Person
+
+![Person Detection](inference_results/person_test_01.jpg)
+
+### Pig
+
+![Pig Detection](inference_results/pig_test_03.jpg)
