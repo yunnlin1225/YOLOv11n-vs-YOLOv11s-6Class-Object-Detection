@@ -325,27 +325,27 @@ YOLOv11s 在最終參數設定 **`cls=0.745`、`box=8.0`** 下，五折平均 Pr
 
 ### Bear
 
-![Bear Detection](inference_results/bear_test_04.jpg)
+![Bear Detection](images/bear_test_04.jpg)
 
 ### Cat
 
-![Cat Detection](inference_results/cat_test_02.jpg)
+![Cat Detection](images/cat_test_02.jpg)
 
 ### Dog
 
-![Dog Detection](inference_results/dog_test_05.jpg)
+![Dog Detection](images/dog_test_05.jpg)
 
 ### Monkey
 
-![Monkey Detection](inference_results/monkey_test_01.jpg)
+![Monkey Detection](images/monkey_test_01.jpg)
 
 ### Person
 
-![Person Detection](inference_results/person_test_01.jpg)
+![Person Detection](images/person_test_01.jpg)
 
 ### Pig
 
-![Pig Detection](inference_results/pig_test_03.jpg)
+![Pig Detection](images/pig_test_03.jpg)
 
 ## 結論 (Conclusion)
 
