@@ -21,8 +21,18 @@
 - `n_splits = 5`
 - `shuffle = True`
 - `random_state = 42`
-- 每個 Fold 約 **80% 作為訓練資料**
-- 每個 Fold 約 **20% 作為驗證資料**
+- 每個 Fold 約 **80%（720 張）作為訓練資料**
+- 每個 Fold 約 **20%（180 張）作為驗證資料**
+
+<p align="center">
+  <img src="5-Fold%20單一%20Fold%20資料比例.png" width="500">
+</p>
+
+<p align="center">
+  <b>圖 1　5-Fold Cross Validation 單一 Fold 資料切分比例</b>
+</p>
+
+在五折交叉驗證中，每次使用其中 **4 個 Fold 作為訓練資料（約 80%）**，剩餘 **1 個 Fold 作為驗證資料（約 20%）**，並輪流更換驗證 Fold，使所有資料皆有機會參與模型驗證。
 
 五個 Fold 分別進行獨立訓練與驗證，最後以 Precision、Recall、mAP50 及 mAP50-95 的五折平均值作為模型整體效能評估依據。
 
