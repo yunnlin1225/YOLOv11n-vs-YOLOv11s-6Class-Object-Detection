@@ -48,6 +48,16 @@
 | Cross Validation | 5-Fold | 採用五折交叉驗證 |
 | Random State | 42 | 固定資料切分隨機種子 |
 
+### 訓練策略
+
+模型以 `yolo11s.pt` 預訓練權重進行初始化，並使用固定的五折資料切分進行獨立訓練。每個 Fold 最大訓練 **100 Epochs**，輸入影像尺寸設定為 **640 × 640**，Batch Size 設定為 **8**。
+
+訓練過程啟用 **Automatic Mixed Precision（AMP）** 與 **Cosine Learning Rate Scheduler**，初始學習率（`lr0`）設定為 **0.005**，並於最後 **10 個 Epoch** 關閉 Mosaic Data Augmentation，以維持後期模型訓練的穩定性。
+
+每完成一個 Fold 的訓練後，程式會釋放模型與 GPU 記憶體，並等待 **60 秒**後再進行下一個 Fold，以降低長時間連續訓練造成的硬體負載。
+
+本階段主要用於取得 YOLOv11s 初始模型之五折交叉驗證結果，後續再依據各項效能指標與研究目標之差異，決定模型的改善方向。
+
 ## YOLOv11s 五折交叉驗證結果 (YOLOv11s 5-Fold Cross Validation Results)
 
 為評估 YOLOv11s 初始模型於六類別目標偵測任務中的效能，本研究採用 **5-Fold Cross Validation** 進行模型訓練與驗證，並以 Precision、Recall、mAP50 及 mAP50-95 作為主要評估指標。
