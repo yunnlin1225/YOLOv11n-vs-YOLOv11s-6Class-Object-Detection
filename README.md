@@ -122,7 +122,7 @@
 | **總計** | **6 Classes** | - | **900** |
 
 <p align="center">
-  <img src="images/六類別影像數量分布資訊圖表.png" width="750">
+  <img src="images/六類別影像數量分布資訊圖表.png" width="600">
 </p>
 
 <p align="center">
