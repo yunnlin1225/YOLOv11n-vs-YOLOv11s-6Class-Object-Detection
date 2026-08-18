@@ -345,8 +345,8 @@ YOLOv11s 在最終參數設定 **`cls=0.745`、`box=8.0`** 下，五折平均 Pr
     <td align="center"><b>Pig</b></td>
   </tr>
 </table>
-## 結論 (Conclusion)
 
+## 結論 (Conclusion)
 本研究完成 YOLOv11s 六類別目標偵測模型之建立與評估，並透過 **5-Fold Cross Validation** 驗證模型於不同資料切分下的偵測效能與穩定性。
 
 經超參數測試後，最終選定 **`cls=0.745`、`box=8.0`** 作為模型訓練設定，五折平均 Precision 為 **90.08%**、Recall 為 **90.18%**、mAP50 為 **93.30%**、mAP50-95 為 **77.58%**，四項指標皆達成本研究設定之效能目標。
