@@ -323,30 +323,28 @@ YOLOv11s 在最終參數設定 **`cls=0.745`、`box=8.0`** 下，五折平均 Pr
 
 使用最終選定之 YOLOv11s 模型，並設定 **Confidence Threshold = 0.25**，針對六類別測試影像進行實際推論，以驗證模型於未參與訓練影像上的目標辨識能力。
 
-### Bear
-
-![Bear Detection](images/bear_test_04.jpg)
-
-### Cat
-
-![Cat Detection](images/cat_test_02.jpg)
-
-### Dog
-
-![Dog Detection](images/dog_test_05.jpg)
-
-### Monkey
-
-![Monkey Detection](images/monkey_test_01.jpg)
-
-### Person
-
-![Person Detection](images/person_test_01.jpg)
-
-### Pig
-
-![Pig Detection](images/pig_test_03.jpg)
-
+<table>
+  <tr>
+    <td align="center"><img src="images/bear_test_04.jpg" width="300"></td>
+    <td align="center"><img src="images/cat_test_02.jpg" width="300"></td>
+    <td align="center"><img src="images/dog_test_05.jpg" width="300"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Bear</b></td>
+    <td align="center"><b>Cat</b></td>
+    <td align="center"><b>Dog</b></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="images/monkey_test_01.jpg" width="300"></td>
+    <td align="center"><img src="images/person_test_01.jpg" width="300"></td>
+    <td align="center"><img src="images/pig_test_03.jpg" width="300"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Monkey</b></td>
+    <td align="center"><b>Person</b></td>
+    <td align="center"><b>Pig</b></td>
+  </tr>
+</table>
 ## 結論 (Conclusion)
 
 本研究完成 YOLOv11s 六類別目標偵測模型之建立與評估，並透過 **5-Fold Cross Validation** 驗證模型於不同資料切分下的偵測效能與穩定性。
