@@ -125,14 +125,14 @@ Test 3 則維持 **conf=0.32、iou=0.70**，並將 Image Size 由 **800 提高�
 
 #### Video 1
 
-待加入影片測試結果與分析。
+▶️ [觀看 Video 1](videos/video_01.avi)
 
 #### Video 2
 
-待加入影片測試結果與分析。
+▶️ [觀看 Video 2](videos/video_02.avi)
 
 #### Video 3
 
-待加入影片測試結果與分析。
+▶️ [觀看 Video 3](videos/video_03.avi)
 
 > **其餘參數組合主要作為推論參數比較實驗，本說明檔則以最終選定設定之三部代表性影片作為主要展示結果。**
