@@ -123,16 +123,16 @@ Test 3 則維持 **conf=0.32、iou=0.70**，並將 Image Size 由 **800 提高�
 
 三部影片皆使用相同模型權重與推論參數進行測試，用以觀察 YOLOv11s 優化模型於不同動態影像與場景中的實際偵測表現。
 
-#### Video 1
+### Video 1
 
-▶️ [觀看 Video 1](videos/video_01.avi)
+▶️ [觀看 Video 1](videos/video_01.mp4)
 
-#### Video 2
+### Video 2
 
-▶️ [觀看 Video 2](videos/video_02.avi)
+▶️ [觀看 Video 2](videos/video_02.mp4)
 
-#### Video 3
+### Video 3
 
-▶️ [觀看 Video 3](videos/video_03.avi)
+▶️ [觀看 Video 3](videos/video_03.mp4)
 
 > **其餘參數組合主要作為推論參數比較實驗，本說明檔則以最終選定設定之三部代表性影片作為主要展示結果。**
