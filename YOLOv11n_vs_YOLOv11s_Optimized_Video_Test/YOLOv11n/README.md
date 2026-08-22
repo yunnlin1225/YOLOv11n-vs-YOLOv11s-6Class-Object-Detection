@@ -125,7 +125,8 @@ Test 3 則維持 **conf=0.32、iou=0.70**，並將 Image Size 由 **800 提高�
 
 ### Video 1
 
-▶️ [觀看 Video 1](videos/video_01.mp4)
+https://github.com/user-attachments/assets/f07891bd-c151-41be-ae7d-1b588f4c713d
+
 
 ### Video 2
 
