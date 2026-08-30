@@ -19,9 +19,7 @@
 
 第二次優化新增 **150 張背景負樣本（Background Negative Samples）**，使資料集總數增加至 **1050 張圖片**。
 
-<p align="center">
-  <img src="../dataset_adjustment.png" width="600">
-</p>
+<img src="../images/dataset_adjustment.png" width="600">
 
 > **注意：Background 並非第 7 個偵測類別，模型仍維持 6 個正式偵測類別。**
 
