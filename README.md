@@ -198,6 +198,8 @@ YOLOv11s 則於三類別研究階段進一步進行模型優化實驗，作為�
 - 每個 Fold **80%（840 張）作為訓練資料**
 - 每個 Fold **20%（210 張）作為驗證資料**
 
+其中，六類別目標樣本與背景負樣本共同納入五折交叉驗證。
+
 <p align="center">
   <img src="images/5fold_dataset_split.png" width="500">
 </p>
