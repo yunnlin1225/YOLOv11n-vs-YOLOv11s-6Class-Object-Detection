@@ -199,11 +199,11 @@ YOLOv11s 則於三類別研究階段進一步進行模型優化實驗，作為�
 - 每個 Fold 約 **20%（180 張）作為驗證資料**
 
 <p align="center">
-  <img src="images/5-Fold%20單一%20Fold%20資料比例.png" width="500">
+  <img src="images/5fold_dataset_split.png" width="500">
 </p>
 
 <p align="center">
-  <b>圖 3　5-Fold Cross Validation 單一 Fold 資料切分比例</b>
+  <b>圖 3　1050 張資料集之 5-Fold Cross Validation 單一 Fold 資料切分比例</b>
 </p>
 
 在五折交叉驗證中，資料集被劃分為 **5 個 Fold**。每次使用其中 **4 個 Fold 作為訓練資料（80%）**，剩餘 **1 個 Fold 作為驗證資料（20%）**，並輪流更換驗證 Fold。
