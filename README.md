@@ -170,6 +170,14 @@ YOLOv11s 則於三類別研究階段進一步進行模型優化實驗，作為�
 | Background Negative Samples | 150 |
 | **總計** | **1050** |
 
+<p align="center">
+  <img src="images/latest_training_dataset_distribution.png" width="550">
+</p>
+
+<p align="center">
+  <b>圖 2　最新訓練資料集組成（1050 張影像）</b>
+</p>
+
 因此，本研究資料集發展歷程如下：
 
 **300 張（三類別）**  
