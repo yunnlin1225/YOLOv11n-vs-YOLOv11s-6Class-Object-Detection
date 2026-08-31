@@ -111,7 +111,7 @@ YOLOv11s 則於三類別研究階段進一步進行模型優化實驗，作為�
 </p>
 
 <p align="center">
-  <b>圖 2　六類別資料集影像數量分布</b>
+  <b>圖1　六類別資料集影像數量分布</b>
 </p>
 
 由資料分布可看出，Dog、Cat、Bear、Pig、Monkey 及 Person 六個類別皆包含 **150 張影像**，各類別資料數量維持一致。
@@ -159,17 +159,6 @@ YOLOv11s 則於三類別研究階段進一步進行模型優化實驗，作為�
 
 經過前期三類別模型建立、資料量擴充、六類別資料集建立及背景負樣本擴充後，目前最新訓練資料集包含 **900 張六類別目標樣本與 150 張背景負樣本，共計 1050 張影像**。
 
-| 資料類型 | 影像數量 |
-| --- | ---: |
-| Dog | 150 |
-| Cat | 150 |
-| Bear | 150 |
-| Pig | 150 |
-| Monkey | 150 |
-| Person | 150 |
-| Background Negative Samples | 150 |
-| **總計** | **1050** |
-
 <p align="center">
   <img src="images/latest_training_dataset_distribution.png" width="550">
 </p>
@@ -214,7 +203,7 @@ YOLOv11s 則於三類別研究階段進一步進行模型優化實驗，作為�
 </p>
 
 <p align="center">
-  <b>圖 1　5-Fold Cross Validation 單一 Fold 資料切分比例</b>
+  <b>圖 3　5-Fold Cross Validation 單一 Fold 資料切分比例</b>
 </p>
 
 在五折交叉驗證中，資料集被劃分為 **5 個 Fold**。每次使用其中 **4 個 Fold 作為訓練資料（80%）**，剩餘 **1 個 Fold 作為驗證資料（20%）**，並輪流更換驗證 Fold。
