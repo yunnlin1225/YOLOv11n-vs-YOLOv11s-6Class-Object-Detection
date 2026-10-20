@@ -369,35 +369,59 @@ YOLOv11s 則保留三類別模型優化研究，作為後續參數調整的參�
 
 透過增加核心物種的影像數量，以及擴充不同環境、光線與拍攝角度的樣本，期望提升模型在多樣化場景中的辨識能力，並作為後續 YOLO 模型訓練、效能比較與系統整合的基礎。
 
-## 9.3 五折交叉驗證（5-Fold Cross Validation）
+### 9.3 模型訓練設定與資料驗證（Training Configuration & Validation）
 
-本研究採用五折交叉驗證，評估 YOLOv11n 與 YOLOv11s 在不同資料切分下的偵測效能。
+本研究依照不同研究階段採用對應的資料切分與模型驗證方式。早期六類別研究透過五折交叉驗證分析 YOLOv11n 與 YOLOv11s 的辨識效能；後續八類別模型則採用固定隨機種子的 80% 訓練集與 20% 驗證集進行訓練。
 
-主要設定為：
+#### 9.3.1 歷史研究：五折交叉驗證
 
-- `n_splits = 5`
-- `shuffle = True`
-- `random_state = 42`
+在六類別加背景負樣本的 1,050 張實驗資料集中，本研究採用五折交叉驗證（5-Fold Cross Validation），將資料分成五個部分，每次使用其中四個部分進行模型訓練，其餘一個部分進行驗證。
 
-每次使用四個 Fold 進行訓練，剩餘一個 Fold 進行驗證。
+主要設定如下：
 
-在 1050 張影像的實驗版本中，每一 Fold 的訓練與驗證比例為：
+| 參數 | 設定值 |
+|---|---|
+| Cross Validation | 5-Fold |
+| n_splits | 5 |
+| shuffle | True |
+| random_state | 42 |
+| Dataset Size | 1,050 |
+| Training Images / Fold | 840 |
+| Validation Images / Fold | 210 |
 
-| 資料用途 | 比例 | 數量 |
-|---|---:|---:|
-| Training | 80% | 840 |
-| Validation | 20% | 210 |
-| **總計** | **100%** | **1050** |
+透過五次訓練與驗證，分析模型在不同資料切分下的效能與穩定性。
 
-<p align="center">
-  <img src="images/5fold_dataset_split.png" width="500">
-</p>
+#### 9.3.2 最新研究：八類別 YOLO11n 模型訓練
 
-<p align="center">
-  <b>圖 3　1050 張資料集之五折交叉驗證切分示意圖</b>
-</p>
+為支援 WildGuard AI 的多物種監測需求，本研究進一步建立八類別資料集，包含 2,000 張目標影像及 200 張背景負樣本，共計 2,200 張。
 
-完成五次訓練與驗證後，透過不同 Fold 的結果分析模型效能與穩定性。
+最新 YOLO11n 訓練程式採用 80% Training 與 20% Validation 的資料切分方式，並使用固定隨機種子確保切分結果可重現。
+
+| 項目 | 設定 |
+|---|---|
+| Model | YOLO11n |
+| Classes | 8 |
+| Epochs | 100 |
+| Batch Size | 8 |
+| Image Size | 640 × 640 |
+| Optimizer | Auto |
+| Classification Loss Weight | 0.75 |
+| Cosine Learning Rate | True |
+| Close Mosaic | 10 |
+| AMP | True |
+| Workers | 2 |
+| Seed | 42 |
+| Deterministic | True |
+
+**資料集切分規劃：**
+
+| 資料用途 | 目標影像 | 背景負樣本 | 總數 |
+|---|---:|---:|---:|
+| Training | 1,600 | 160 | 1,760 |
+| Validation | 400 | 40 | 440 |
+| **Total** | **2,000** | **200** | **2,200** |
+
+本階段採用固定比例的訓練與驗證資料切分，與早期五折交叉驗證屬於不同實驗設定。後續將依照模型訓練結果，透過 Precision、Recall、mAP50 與 mAP50-95 等指標評估辨識效能。
 
 ## 9.4 YOLOv11n 與 YOLOv11s 模型比較
 
