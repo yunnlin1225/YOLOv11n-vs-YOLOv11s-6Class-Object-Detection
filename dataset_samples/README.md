@@ -679,16 +679,16 @@ git push origin main
 
 | Class | Images | Labels | Status |
 |---|---:|---:|---|
-| Bear | 400 | 400 | 待檔案確認 |
-| Cat | 200 | 200 | 待檔案確認 |
-| Deer | 200 | 200 | 待檔案確認 |
-| Dog | 200 | 200 | 待檔案確認 |
-| Iguana | 400 | 400 | 待檔案確認 |
-| Monkey | 200 | 200 | 待檔案確認 |
-| Person | 200 | 200 | 待檔案確認 |
-| Pig | 200 | 200 | 待檔案確認 |
-| Background | 200 | 200 | 待檔案確認 |
-| **Total** | **2,200** | **2,200** | **待最終確認** |
+| Bear | 400 | 400 | ✅ Complete |
+| Cat | 200 | 200 | ✅ Complete |
+| Deer | 200 | 200 | ✅ Complete |
+| Dog | 200 | 200 | ✅ Complete |
+| Iguana | 400 | 400 | ✅ Complete |
+| Monkey | 200 | 200 | ✅ Complete |
+| Person | 200 | 200 | ✅ Complete |
+| Pig | 200 | 200 | ✅ Complete |
+| Background | 200 | 200 | ✅ Complete |
+| **Total** | **2,200** | **2,200** | **✅ Complete** |
 
 最終資料集規模：
 
