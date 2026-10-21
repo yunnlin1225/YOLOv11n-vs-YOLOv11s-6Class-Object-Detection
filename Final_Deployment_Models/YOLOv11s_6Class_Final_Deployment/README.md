@@ -1,5 +1,5 @@
-# 🚀 YOLOv11s Final Deployment
-### YOLOv11s 最終部署模型
+# 🚀 YOLOv11s 6-Class Final Deployment
+### YOLOv11s 六類別最終訓練模型（歷史研究版本）
 
 ## 📌 1. 模型說明（Model Overview）
 
