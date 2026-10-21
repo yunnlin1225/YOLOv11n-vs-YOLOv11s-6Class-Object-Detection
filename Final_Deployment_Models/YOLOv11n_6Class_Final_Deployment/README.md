@@ -1,5 +1,5 @@
-# 🚀 YOLOv11n Final Deployment
-### YOLOv11n 最終部署模型
+# 🚀 YOLO11n 6-Class Research Models
+### YOLO11n 六類別歷史研究模型
 
 ## 📌 1. 模型說明（Model Overview）
 
