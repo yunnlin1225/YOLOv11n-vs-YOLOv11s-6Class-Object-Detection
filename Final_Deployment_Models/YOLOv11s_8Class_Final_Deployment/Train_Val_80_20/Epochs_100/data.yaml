@@ -1,0 +1,12 @@
+path: C:/Users/user/Desktop/YOLOv11s_7Class_Final (切分)
+train: images/train
+val: images/val
+names:
+  0: dog
+  1: cat
+  2: bear
+  3: pig
+  4: monkey
+  5: person
+  6: iguana
+  7: deer
